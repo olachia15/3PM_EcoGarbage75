@@ -1,0 +1,54 @@
+// Pines definidos
+const int Buzzer = 4;
+const int Verde = 5;
+const int Amarillo = 6;
+const int Rojo = 7;
+
+void setup() {
+  pinMode(Buzzer, OUTPUT);
+  pinMode(Verde, OUTPUT);
+  pinMode(Amarillo, OUTPUT);
+  pinMode(Rojo, OUTPUT);
+}
+
+void loop() {
+  // ======================================
+  //  VERDE 4 segundos
+  // ======================================
+  digitalWrite(Buzzer, LOW);
+  digitalWrite(Verde, HIGH);
+  digitalWrite(Amarillo, LOW);
+  digitalWrite(Rojo, LOW);
+  delay(4000);  // 4 segundos
+
+  // ======================================
+  //  AMARILLO + 3 PITIDOS
+  // ======================================
+  digitalWrite(Verde, LOW);
+  digitalWrite(Amarillo, HIGH);
+  
+  // Pitido 1
+  digitalWrite(Buzzer, HIGH); delay(150);
+  digitalWrite(Buzzer, LOW);  delay(150);
+  // Pitido 2
+  digitalWrite(Buzzer, HIGH); delay(150);
+  digitalWrite(Buzzer, LOW);  delay(150);
+  // Pitido 3
+  digitalWrite(Buzzer, HIGH); delay(150);
+  digitalWrite(Buzzer, LOW);  delay(150);
+
+  digitalWrite(Amarillo, LOW);
+
+  // ======================================
+  //  ROJO + PITIDO LARGO 1 segundo
+  // ======================================
+  digitalWrite(Rojo, HIGH);
+  digitalWrite(Buzzer, HIGH);
+  delay(1000);  // 1 segundo de sonido
+  digitalWrite(Buzzer, LOW);
+
+  // ======================================
+  //  ROJO ESPERA 3 segundos SIN SONIDO
+  // ======================================
+  delay(3000);  // 3 segundos
+}
